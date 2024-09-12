@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="shortcut icon" type="png" href="{% static '/images/icon/favicon.png' %}">
+	<title>Computer Science Courses on LearnEd</title>
+	<link rel="stylesheet" type="text/css" href="{% static '/subjects/subjects.css' %}">
+	<script type="text/javascript" src="{% static '/script.js' %}"></script>
+
+	<link type="text/css" rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+
+		<!-- Slick -->
+		<link type="text/css" rel="stylesheet" href="{% static 'css/slick.css' %}"/>
+		<link type="text/css" rel="stylesheet" href="{% static 'css/slick-theme.css' %}"/>
+
+		<!-- nouislider -->
+		<link type="text/css" rel="stylesheet" href="{% static 'css/nouislider.min.css' %}"/>
+
+		<!-- Font Awesome Icon -->
+		<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+
+		<!-- Custom stlylesheet -->
+		<link type="text/css" rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+	<header>
+		<div class="nav" id="nav">
+			<div id="learned-logo">
+			<a href="{% url 'home_page' %}"><img src="{% static '/images/icon/logo.png' %}" style="width: 120px;"></a></div>
+			<div class="switch-tab" id="switch-tab" onclick="switchTAB()"><img src="{% static '/images/icon/menu.png' %}"></div>
+			<ul id="list-switch">
+				{% for category in categories %}
+					<li><a href="{% url 'course_page' slug=category.slug %}"><img src="" class="icon">{{ category.title }}</a></li>
+				{% endfor %}
+			</ul>
+			<div class="search" id="search-switch">
+				<input type="search" placeholder="Search" class="srch"><button id="srchbtn"><img src="{% static '/images/icon/search.png' %}"></button>
+			</div>
+		</div>
+	</header>
+
+		<!-- SECTION -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+					<!-- Product main img -->
+						<div class="col-md-5 col-md-push-2">
+						<div id="product-main-img">
+							<div class="product-preview">
+								<img src="{{ subject_detail.image.url }}" alt="">
+							</div>
+						</div>
+					</div>
+					<!-- /Product main img -->
+
+					<!-- Product thumb imgs -->
+						<div class="col-md-2  col-md-pull-5">
+						<div id="product-imgs">
+							<div class="product-preview">
+								<img src="{{ subject_detail.image.url }}" alt="">
+							</div>
+						</div>
+					</div>
+					<!-- /Product thumb imgs -->
+
+					<!-- Product details -->
+						<div class="col-md-5">
+							<div class="product-details">
+							<h2 class="product-name">{{ subject_detail.title }}</h2>
+
+						</div>
+					</div>
+					<!-- /Product details -->
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /SECTION -->
+
+		<!-- Section -->
+		<div class="section">
+			<!-- container -->
+			<div class="container">
+				<!-- row -->
+				<div class="row">
+
+					<div class="col-md-12">
+						<div class="section-title text-center">
+							<h3 class="title">Related Subjects</h3>
+						</div>
+					</div>
+					<!-- product -->
+					{% for related_product in related_products %}
+						<div class="col-md-3 col-xs-6">
+						<div class="product">
+							<div class="product-img">
+							<img src="{{ related_product.image.url }}" alt="">
+							</div>
+							<div class="product-body">
+								<h3 class="product-name"><a href="#">{{ related_product.title }}</a></h3>
+								<div class="product-rating">
+								</div>
+							</div>
+						</div>
+					</div>
+					{% endfor %}
+					<!-- /product -->
+					<div class="clearfix visible-sm visible-xs"></div>
+				</div>
+				<!-- /row -->
+			</div>
+			<!-- /container -->
+		</div>
+		<!-- /Section -->
+<footer>
+	<div class="footer-container">
+		<div class="left-col">
+			<img src="{% static '/images/icon/logo - Copy.png' %}" style="width: 200px;">
+			<div class="logo"></div>
+			<div class="social-media">
+				<a href="#"><img src="{% static '/images/icon\fb.png' %}"></a>
+				<a href="#"><img src="{% static '/images/icon\insta.png' %}"></a>
+				<a href="#"><img src="{% static '/images/icon\tt.png' %}"></a>
+				<a href="#"><img src="{% static '/images/icon\ytube.png' %}"></a>
+				<a href="#"><img src="{% static '/images/icon\linkedin.png' %}"></a>
+			</div><br><br>
+			<p class="rights-text">Copyright © 2021 Created By Roshan Kumar, Abhishek Dulat All Rights Reserved.</p>
+			<br><p><img src="{% static '/images/icon/location.png' %}"> Lovely Professional University<br>Phagwara, Punjab-144401</p><br>
+			<p><img src="{% static '/images/icon/phone.png' %}"> +91-1234-567-890<br><img src="{% static '/images/icon/mail.png' %}">&nbsp; learnedonline9419@gmail.com</p>
+		</div>
+		<div class="right-col">
+			<h1 style="color: #fff">Our Newsletter</h1>
+			<div class="border"></div><br>
+			<p>Enter Your Email to get our News and updates.</p>
+			<form class="newsletter-form">
+				<input class="txtb" type="email" placeholder="Enter Your Email">
+				<input class="btn" type="submit" value="Submit">
+			</form>
+		</div>
+	</div>
+</footer>
+
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'js/slick.min.js' %}"></script>
+		<script src="{% static 'js/nouislider.min.js' %}"></script>
+		<script src="{% static 'js/jquery.zoom.min.js' %}"></script>
+		<script src="{% static 'js/main.js' %}"></script>
+		<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+		<script src="{% static 'js/main.js' %}"></script>
